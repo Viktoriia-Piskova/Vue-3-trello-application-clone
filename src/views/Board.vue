@@ -1,12 +1,28 @@
 <template>
   <div class="board">
-
+    <div class="flex flex-row items-start">
+      <div class="column" v-for="column of board.columns" :key="column.name">
+        <div class="font-bold flex items-center mb-2">
+          {{ column.name }}</div>
+        <div class="list-reset">
+          <div
+          class="task"
+          v-for="task in column.tasks"
+          :key="task.id">
+          <span class="font-bold w-full flex flex-no-shrink">
+            {{task.name}}</span>
+        </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+import { mapState } from 'vuex'
 
+export default {
+  computed: mapState(['board'])
 }
 </script>
 
@@ -26,6 +42,6 @@ export default {
 
 .task-bg {
   @apply pin absolute;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 </style>
