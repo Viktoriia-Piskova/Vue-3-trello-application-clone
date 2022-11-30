@@ -1,7 +1,7 @@
 <template>
   <div class="board">
     <div class="flex flex-row items-start">
-      <div class="column" v-for="column of board.columns" :key="column.name">
+      <div class="column" v-for="(column, $columnIndex) of board.columns" :key="$columnIndex">
         <div class="font-bold flex items-center mb-2">
           {{ column.name }}</div>
         <div class="list-reset">
@@ -11,6 +11,10 @@
           :key="task.id">
           <span class="font-bold w-full flex flex-no-shrink">
             {{task.name}}</span>
+            <p v-if="task.description"
+             class="w-full flex flex-no-shrink mt-1 text-sm">
+              {{task.description}}
+            </p>
         </div>
         </div>
       </div>
