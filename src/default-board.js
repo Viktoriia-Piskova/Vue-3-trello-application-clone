@@ -9,7 +9,7 @@ export default {
         {
           description: 'first task details',
           name: 'first task',
-          id: uuid(),
+          id: 'qazqaz',
           userAssigned: null
         },
         {

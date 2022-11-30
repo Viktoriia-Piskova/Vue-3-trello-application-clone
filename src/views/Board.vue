@@ -19,6 +19,10 @@
         </div>
       </div>
     </div>
+    <div class="task-bg"
+    v-if="taskIsOpen">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -26,7 +30,11 @@
 import { mapState } from 'vuex'
 
 export default {
-  computed: mapState(['board'])
+  computed: { ...mapState(['board']),
+    taskIsOpen () {
+      return this.$route.name === 'task'
+    }
+  }
 }
 </script>
 
