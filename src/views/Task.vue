@@ -1,7 +1,11 @@
 <template>
   <div class="task-view">
-    <div class="flex flex-col flex-grow items-start justify-between px-4">
-        {{task}}
+    <div class="flex flex-col flex-grow items-start justify-between px-4 font-bold">
+        {{task.name}}
+        <span class="text-sm mt-1"
+        v-if="task.description">
+          {{task.description}}
+        </span>
     </div>
 
   </div>
@@ -13,7 +17,7 @@ export default {
   computed: {
     ...mapGetters(['getTask']),
     task () {
-      return this.getTask(this.$route.params.id) || 'Ooops, could not find this task'
+      return this.getTask(this.$route.params.id) // || 'Ooops, could not find this task'
     }
   }
 }

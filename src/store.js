@@ -19,8 +19,6 @@ export default new Vuex.Store({
           for (const task of column.tasks) {
             if (task.id === id) {
               return task
-            } else {
-              return false
             }
           }
         }

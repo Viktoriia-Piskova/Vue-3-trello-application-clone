@@ -8,7 +8,8 @@
           <div
           class="task"
           v-for="task in column.tasks"
-          :key="task.id">
+          :key="task.id"
+          @click="goToTask(task)">
           <span class="font-bold w-full flex flex-no-shrink">
             {{task.name}}</span>
             <p v-if="task.description"
@@ -33,6 +34,11 @@ export default {
   computed: { ...mapState(['board']),
     taskIsOpen () {
       return this.$route.name === 'task'
+    }
+  },
+  methods: {
+    goToTask (task) {
+      this.$router.push({ name: 'task', params: { id: task.id } })
     }
   }
 }
