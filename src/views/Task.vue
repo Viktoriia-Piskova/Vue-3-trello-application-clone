@@ -7,7 +7,7 @@
           {{task.description}}
         </span>
         <textarea
-          class="relative border-none bg-transparent px-2 mt-2 h-64 leading-normal"
+          class="relative border-none bg-transparent px-2 mt-2 h-6 leading-normal"
           :value="task.description"
         />
     </div>
