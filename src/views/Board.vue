@@ -21,7 +21,8 @@
       </div>
     </div>
     <div class="task-bg"
-    v-if="taskIsOpen">
+    v-if="taskIsOpen"
+    @click.self="close">
       <router-view />
     </div>
   </div>
@@ -39,7 +40,8 @@ export default {
   methods: {
     goToTask (task) {
       this.$router.push({ name: 'task', params: { id: task.id } })
-    }
+    },
+    close () { this.$router.push({ name: 'board' }) }
   }
 }
 </script>
