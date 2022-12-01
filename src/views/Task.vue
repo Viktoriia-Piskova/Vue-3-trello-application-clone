@@ -6,6 +6,10 @@
         v-if="task.description">
           {{task.description}}
         </span>
+        <textarea
+          class="relative border-none bg-transparent px-2 mt-2 h-64 leading-normal"
+          :value="task.description"
+        />
     </div>
 
   </div>
