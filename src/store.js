@@ -32,6 +32,9 @@ export default new Vuex.Store({
         id: uuid(),
         description: ''
       })
+    },
+    UPDATE_TASK (state, { task, key, value }) {
+      Vue.set(task, key, value) // makes these properties reactive in Vue app
     }
   }
 })
