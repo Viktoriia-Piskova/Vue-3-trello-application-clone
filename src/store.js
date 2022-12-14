@@ -36,15 +36,15 @@ export default new Vuex.Store({
     UPDATE_TASK (state, { task, key, value }) {
       Vue.set(task, key, value) // makes these properties reactive in Vue app
     },
-    MOVE_TASK (state, { fromTasks, toTasks, taskIndex }) {
-      const taskToMove = fromTasks.splice(taskIndex, 1)[0]
-      toTasks.push(taskToMove)
+    MOVE_TASK (state, { fromTasks, toTasks, fromTaskIndex, toTaskIndex }) {
+      const taskToMove = fromTasks.splice(fromTaskIndex, 1)[0]
+      toTasks.splice(toTaskIndex, 0, taskToMove)
     },
-    MOVE_COLUMN (state, { fromColumnIndex, toColumnindex }) {
+    MOVE_COLUMN (state, { fromColumnIndex, toColumnIndex }) {
       const columnList = state.board.columns
 
       const columnToMove = columnList.splice(fromColumnIndex, 1)[0]
-      columnList.splice(toColumnindex, 0, columnToMove)
+      columnList.splice(toColumnIndex, 0, columnToMove)
     }
   }
 })

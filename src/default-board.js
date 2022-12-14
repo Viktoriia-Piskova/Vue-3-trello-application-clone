@@ -8,19 +8,19 @@ export default {
       tasks: [
         {
           description: 'first task details',
-          name: 'first task',
+          name: 'The first task',
           id: '12a34er',
           userAssigned: null
         },
         {
           description: '',
-          name: 'second task',
+          name: 'Second todo task',
           id: '12a34et',
           userAssigned: null
         },
         {
-          description: '',
-          name: 'and thrid',
+          description: 'Get ready to drag&drop everything',
+          name: 'Get ready',
           id: '12a34ey',
           userAssigned: null
         }
@@ -30,9 +30,15 @@ export default {
       name: 'in-progress',
       tasks: [
         {
-          description: '',
-          name: 'first task',
+          description: 'This is description for in progress task',
+          name: 'first in-progress task',
           id: '12a34eu',
+          userAssigned: null
+        },
+        {
+          description: '',
+          name: 'Another task in progress',
+          id: '12a34ea',
           userAssigned: null
         }
       ]
@@ -41,9 +47,15 @@ export default {
       name: 'done',
       tasks: [
         {
-          description: '',
-          name: 'first task',
+          description: 'Ready to be checked task in done column',
+          name: 'Done task',
           id: '12a34ei',
+          userAssigned: null
+        },
+        {
+          description: 'Done properly',
+          name: 'Best task ever',
+          id: '12a34es',
           userAssigned: null
         }
       ]
