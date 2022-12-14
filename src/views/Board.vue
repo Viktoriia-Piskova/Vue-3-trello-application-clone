@@ -1,28 +1,43 @@
 <template>
   <div class="board">
     <div class="flex flex-row items-start">
-      <div class="column" v-for="(column, $columnIndex) of board.columns" :key="$columnIndex">
-        <div class="font-bold flex items-center mb-2">
-          {{ column.name }}</div>
+      <div
+        class="column"
+        v-for="(column, $columnIndex) of board.columns"
+        :key="$columnIndex"
+        @drop="moveTask($event, column.tasks)"
+        @dragover.prevent
+        @dragenter.prevent>
+          <div class="font-bold flex items-center mb-2">
+            {{ column.name }}
+          </div>
+
         <div class="list-reset">
           <div
-          class="task"
-          v-for="task in column.tasks"
-          :key="task.id"
-          @click="goToTask(task)">
-          <span class="font-bold w-full flex flex-no-shrink">
-            {{task.name}}</span>
-            <p v-if="task.description"
-             class="w-full flex flex-no-shrink mt-1 text-sm">
+            class="task"
+            v-for="(task, $taskIndex) of column.tasks"
+            :key="task.id"
+            draggable
+            @dragstart="pickupTask($event, $taskIndex, $columnIndex)"
+            @click="goToTask(task)">
+
+            <span
+              class="font-bold w-full flex flex-no-shrink">
+              {{task.name}}
+            </span>
+            <p
+              v-if="task.description"
+              class="w-full flex flex-no-shrink mt-1 text-sm">
               {{task.description}}
             </p>
+          </div>
         </div>
-        </div>
+
         <input type="text"
           class="block p-2 w-full bg-transparent"
           placeholder="+ Enter new task"
           @keyup.enter="createTask($event, column.tasks)"
-          >
+          />
       </div>
     </div>
   <div class="task-bg"
@@ -53,6 +68,25 @@ export default {
         name: event.target.value // to read the value of input
       })
       event.target.value = ''
+    },
+    pickupTask (e, taskIndex, fromColumnIndex) {
+      // debugger
+      e.dataTransfer.effectAllowed = 'move'
+      e.dataTransfer.dropEffect = 'move'
+
+      e.dataTransfer.setData('task-index', taskIndex)
+      e.dataTransfer.setData('from-column-index', fromColumnIndex)
+    },
+    moveTask (e, toTasks) {
+      const fromColumnIndex = e.dataTransfer.getData('from-column-index')
+      const fromTasks = this.board.columns[fromColumnIndex].tasks
+      const taskIndex = e.dataTransfer.getData('task-index')
+
+      this.$store.commit('MOVE_TASK', {
+        fromTasks,
+        toTasks,
+        taskIndex
+      })
     }
   }
 }
