@@ -4,10 +4,6 @@
       <input type="text" :value="task.name" class="p-2 w-full mr-2 block text-xl font-bold"
       @change="updateTaskProperty($event, 'name')"
       @keyup.enter="updateTaskProperty($event, 'name')">
-        <!-- <span class="text-sm mt-1"
-        v-if="task.description">
-          {{task.description}}
-        </span> -->
         <textarea
           class="relative border-none w-full bg-transparent px-2 mt-2 leading-normal h-12"
           :value="task.description"
