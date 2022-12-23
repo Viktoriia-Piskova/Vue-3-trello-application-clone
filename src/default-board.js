@@ -19,7 +19,7 @@ export default {
           userAssigned: null
         },
         {
-          description: 'Get ready to drag&drop everything',
+          description: 'Get ready to drag&drop columns and tasks',
           name: 'Get ready',
           id: '12a34ey',
           userAssigned: null
