@@ -33,6 +33,10 @@ export default new Vuex.Store({
         description: ''
       })
     },
+    CREATE_COLUMN (state, { name }) {
+      state.board.columns.push({ name, tasks: [] })
+    },
+
     UPDATE_TASK (state, { task, key, value }) {
       Vue.set(task, key, value) // makes these properties reactive in Vue app
     },
